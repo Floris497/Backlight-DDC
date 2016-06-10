@@ -168,7 +168,7 @@
                     CFRelease(flags);
                 IOI2CConnectRef connect;
                 if (IOI2CInterfaceOpen(interface, kNilOptions, &connect) == KERN_SUCCESS) {
-                    //result = (IOI2CSendRequest(connect, kNilOptions, request) == KERN_SUCCESS);
+                    result = (IOI2CSendRequest(connect, kNilOptions, request) == KERN_SUCCESS);
                     IOI2CInterfaceClose(connect, kNilOptions);
                 }
                 IOObjectRelease(interface);
