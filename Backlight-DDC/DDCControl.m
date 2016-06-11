@@ -95,8 +95,8 @@
     data[1] = 0x84;
     data[2] = 0x03;
     data[3] = command->control_id;
-    data[4] = 0x64 ;
-    data[5] = command->new_value ;
+    data[4] = (command->new_value) >> 8 ;
+    data[5] = command->new_value & 255;
     data[6] = 0x6E^ data[0]^ data[1]^ data[2]^ data[3]^ data[4]^ data[5];
     
     
@@ -138,7 +138,8 @@
     request.replyBytes = sizeof(reply_data);
     
     result = [self DisplayRequest:displayID request:&request];
-    result = (result && reply_data[0] == request.sendAddress && reply_data[2] == 0x2
+    result = (result
+              && reply_data[0] == request.sendAddress && reply_data[2] == 0x2
               && reply_data[4] == command->control_id
               && reply_data[10] == (request.replyAddress ^ request.replySubAddress ^ reply_data[1] ^ reply_data[2] ^ reply_data[3] ^ reply_data[4] ^ reply_data[5] ^ reply_data[6] ^ reply_data[7] ^ reply_data[8] ^ reply_data[9]));
     command->max_value = reply_data[7];
