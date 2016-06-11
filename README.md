@@ -8,13 +8,13 @@ This application implements some (altered) functions from: https://github.com/kf
 
 This application can change brightness and contrast on your DDC-CI enabled monitor.
 
-### support for multiple monitors
+### support for multi monitor setup
 
 
 TODO:
+- proper reading of current values
 - volume slider/mute
 - sleep
 - many other things
-
 
 
