@@ -63,7 +63,7 @@
     command.control_id = RESET;
     command.new_value = 1;
     if (_currentDisplay >= 0) {
-        [self writeDDCCommand:&command ToDisplay:[[_displays objectAtIndex:0] displayID]];
+        [self writeDDCCommand:&command ToDisplay:[[_displays objectAtIndex:_currentDisplay] displayID]];
     }
 }
 
@@ -138,7 +138,9 @@
     request.replyBytes = sizeof(reply_data);
     
     result = [self DisplayRequest:displayID request:&request];
-    result = (result && reply_data[0] == request.sendAddress && reply_data[2] == 0x2 && reply_data[4] == command->control_id && reply_data[10] == (request.replyAddress ^ request.replySubAddress ^ reply_data[1] ^ reply_data[2] ^ reply_data[3] ^ reply_data[4] ^ reply_data[5] ^ reply_data[6] ^ reply_data[7] ^ reply_data[8] ^ reply_data[9]));
+    result = (result && reply_data[0] == request.sendAddress && reply_data[2] == 0x2
+              && reply_data[4] == command->control_id
+              && reply_data[10] == (request.replyAddress ^ request.replySubAddress ^ reply_data[1] ^ reply_data[2] ^ reply_data[3] ^ reply_data[4] ^ reply_data[5] ^ reply_data[6] ^ reply_data[7] ^ reply_data[8] ^ reply_data[9]));
     command->max_value = reply_data[7];
     command->current_value = reply_data[9];
     return result;

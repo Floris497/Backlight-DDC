@@ -18,15 +18,15 @@
     if ([control.displays count])
         [displayChooser removeAllItems];
     
-    for (DDDisplay *disp in control.displays) {
-        NSString* name = [disp screenName];
-        [displayChooser addItemWithTitle:name];
+    for (int c = 0; c < [control.displays count]; c++ ) {
+        DDDisplay *disp = [control.displays objectAtIndex:c];
+        NSString *name = [disp screenName];
+        [displayChooser addItemWithTitle:[NSString stringWithFormat:@"%d:\t%@",c+1,name]];
     }
     
     [control setCurrentDisplay:0];
     
-    [brightnessSlider setDoubleValue:[control getBrightness]];
-    [contrastSlider setDoubleValue:[control getContrast]];
+    [self getCurrentValues];
 
 }
 
@@ -37,6 +37,7 @@
 
 - (IBAction)changeChooser:(NSPopUpButton *)sender {
     [control setCurrentDisplay:sender.indexOfSelectedItem];
+    [self getCurrentValues];
 }
 
 - (IBAction)brightnessChange:(NSSlider *)sender {
@@ -46,6 +47,14 @@
     [control setContrast:[sender intValue]];
 }
 
+- (IBAction)resetDisplay:(NSButton *)sender {
+    [control reset];
+    [self getCurrentValues];
+}
 
+- (void)getCurrentValues {
+    [brightnessSlider setDoubleValue:[control getBrightness]];
+    [contrastSlider setDoubleValue:[control getContrast]];
+}
 
 @end

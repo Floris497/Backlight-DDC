@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10102"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -68,10 +68,10 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="20" y="20" width="480" height="116"/>
+                        <rect key="contentRect" x="20" y="20" width="480" height="107"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-                        <value key="minSize" type="size" width="300" height="116"/>
-                        <value key="maxSize" type="size" width="800" height="116"/>
+                        <value key="minSize" type="size" width="300" height="107"/>
+                        <value key="maxSize" type="size" width="800" height="107"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -86,11 +86,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="116"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="107"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="93p-G6-j6w">
-                                <rect key="frame" x="17" y="72" width="446" height="26"/>
+                                <rect key="frame" x="2" y="78" width="476" height="26"/>
                                 <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" id="pVT-Qq-0nn">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -105,14 +105,24 @@
                                 </connections>
                             </popUpButton>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uYe-tn-ge7">
-                                <rect key="frame" x="18" y="44" width="444" height="27"/>
+                                <rect key="frame" x="2" y="52" width="475" height="27"/>
                                 <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="below" numberOfTickMarks="21" allowsTickMarkValuesOnly="YES" sliderType="linear" id="nE3-hG-xMx"/>
                                 <connections>
                                     <action selector="brightnessChange:" target="XfG-lQ-9wD" id="COU-k1-IfQ"/>
                                 </connections>
                             </slider>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jfh-fH-Vmi">
+                                <rect key="frame" x="359" y="-2" width="122" height="32"/>
+                                <buttonCell key="cell" type="push" title="Reset Display" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jsc-Qd-zBw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="resetDisplay:" target="XfG-lQ-9wD" id="dkV-XG-4nJ"/>
+                                </connections>
+                            </button>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HY1-FP-935">
-                                <rect key="frame" x="18" y="18" width="444" height="26"/>
+                                <rect key="frame" x="2" y="29" width="475" height="26"/>
                                 <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" numberOfTickMarks="21" allowsTickMarkValuesOnly="YES" sliderType="linear" id="sST-Ma-0Hn"/>
                                 <connections>
                                     <action selector="contrastChange:" target="XfG-lQ-9wD" id="62J-Al-jyQ"/>
@@ -120,15 +130,17 @@
                             </slider>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="HY1-FP-935" secondAttribute="bottom" constant="20" symbolic="YES" id="2Ap-6c-bQY"/>
-                            <constraint firstItem="HY1-FP-935" firstAttribute="top" secondItem="uYe-tn-ge7" secondAttribute="bottom" constant="1" id="5Wy-dh-G9X"/>
-                            <constraint firstItem="uYe-tn-ge7" firstAttribute="leading" secondItem="93p-G6-j6w" secondAttribute="leading" constant="1" id="TXt-Z0-RxK"/>
-                            <constraint firstAttribute="trailing" secondItem="uYe-tn-ge7" secondAttribute="trailing" constant="20" symbolic="YES" id="bM8-p6-pKi"/>
-                            <constraint firstItem="uYe-tn-ge7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="bZm-Jd-Y7c"/>
-                            <constraint firstItem="uYe-tn-ge7" firstAttribute="top" secondItem="93p-G6-j6w" secondAttribute="bottom" constant="6" id="d7d-xa-aFq"/>
-                            <constraint firstItem="HY1-FP-935" firstAttribute="trailing" secondItem="uYe-tn-ge7" secondAttribute="trailing" id="ktX-fc-Czb"/>
-                            <constraint firstItem="uYe-tn-ge7" firstAttribute="trailing" secondItem="93p-G6-j6w" secondAttribute="trailing" id="w58-jF-cGw"/>
-                            <constraint firstItem="uYe-tn-ge7" firstAttribute="leading" secondItem="HY1-FP-935" secondAttribute="leading" id="wdV-Pe-UP5"/>
+                            <constraint firstItem="HY1-FP-935" firstAttribute="trailing" secondItem="uYe-tn-ge7" secondAttribute="trailing" id="TZF-H5-XZL"/>
+                            <constraint firstItem="HY1-FP-935" firstAttribute="trailing" secondItem="93p-G6-j6w" secondAttribute="trailing" id="Z1i-xS-9Ku"/>
+                            <constraint firstItem="HY1-FP-935" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="at4-90-LNm"/>
+                            <constraint firstItem="HY1-FP-935" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="4" id="cjV-rQ-JUv"/>
+                            <constraint firstItem="HY1-FP-935" firstAttribute="leading" secondItem="93p-G6-j6w" secondAttribute="leading" id="d2w-Iu-evm"/>
+                            <constraint firstItem="uYe-tn-ge7" firstAttribute="top" secondItem="93p-G6-j6w" secondAttribute="bottom" constant="4" id="dNh-bi-GUq"/>
+                            <constraint firstItem="HY1-FP-935" firstAttribute="top" secondItem="93p-G6-j6w" secondAttribute="bottom" constant="26" id="ge2-Uv-37B"/>
+                            <constraint firstItem="HY1-FP-935" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="52" id="hXT-xP-KFD"/>
+                            <constraint firstItem="HY1-FP-935" firstAttribute="leading" secondItem="uYe-tn-ge7" secondAttribute="leading" id="n6N-Tg-OdT"/>
+                            <constraint firstItem="HY1-FP-935" firstAttribute="trailing" secondItem="jfh-fH-Vmi" secondAttribute="trailing" id="pcq-M7-AdA"/>
+                            <constraint firstItem="jfh-fH-Vmi" firstAttribute="top" secondItem="HY1-FP-935" secondAttribute="bottom" constant="5" id="veG-VQ-SvQ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -139,7 +151,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="506"/>
+            <point key="canvasLocation" x="75" y="501.5"/>
         </scene>
     </scenes>
 </document>

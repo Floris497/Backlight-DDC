@@ -42,6 +42,7 @@ struct DDCReadCommand {
 
 - (void)setBrightness:(int)value;
 - (void)setContrast:(int)value;
+- (void)reset;
 
 - (int)getBrightness;
 - (int)getContrast;

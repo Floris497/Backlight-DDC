@@ -22,7 +22,7 @@
 - (IBAction)changeChooser:(NSPopUpButton *)sender;
 - (IBAction)brightnessChange:(NSSlider *)sender;
 - (IBAction)contrastChange:(NSSlider *)sender;
-
+- (IBAction)resetDisplay:(NSButton *)sender;
 
 @end
 
