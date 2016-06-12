@@ -14,7 +14,7 @@
     self = [super init];
     if (self) {
         _displays = [[NSMutableArray alloc] init];
-        _currentDisplay = 0;
+        _currentDisplayID = 0;
     }
     return self;
 }
@@ -23,8 +23,8 @@
     struct DDCWriteCommand command;
     command.control_id = BRIGHTNESS;
     command.new_value = value;
-    if (_currentDisplay >= 0) {
-        [self writeDDCCommand:&command ToDisplay:[[_displays objectAtIndex:_currentDisplay] displayID]];
+    if (_currentDisplayID >= 0) {
+        [self writeDDCCommand:&command ToDisplay:[[_displays objectAtIndex:_currentDisplayID] displayID]];
     }
 }
 
@@ -32,8 +32,8 @@
     struct DDCWriteCommand command;
     command.control_id = CONTRAST;
     command.new_value = value;
-    if (_currentDisplay >= 0) {
-        [self writeDDCCommand:&command ToDisplay:[[_displays objectAtIndex:_currentDisplay] displayID]];
+    if (_currentDisplayID >= 0) {
+        [self writeDDCCommand:&command ToDisplay:[[_displays objectAtIndex:_currentDisplayID] displayID]];
     }
 }
 
@@ -42,8 +42,8 @@
     command.control_id = BRIGHTNESS;
     command.max_value = 100;
     command.current_value = 0;
-    if (_currentDisplay >= 0) {
-        [self readDDCCommand:&command FromDisplay:[[_displays objectAtIndex:_currentDisplay] displayID]];
+    if (_currentDisplayID >= 0) {
+        [self readDDCCommand:&command FromDisplay:[[_displays objectAtIndex:_currentDisplayID] displayID]];
     }
     return command.current_value;
 }
@@ -52,8 +52,8 @@
     command.control_id = CONTRAST;
     command.max_value = 100;
     command.current_value = 0;
-    if (_currentDisplay >= 0) {
-        [self readDDCCommand:&command FromDisplay:[[_displays objectAtIndex:_currentDisplay] displayID]];
+    if (_currentDisplayID >= 0) {
+        [self readDDCCommand:&command FromDisplay:[[_displays objectAtIndex:_currentDisplayID] displayID]];
     }
     return command.current_value;
 }
@@ -62,8 +62,8 @@
     struct DDCWriteCommand command;
     command.control_id = RESET;
     command.new_value = 1;
-    if (_currentDisplay >= 0) {
-        [self writeDDCCommand:&command ToDisplay:[[_displays objectAtIndex:_currentDisplay] displayID]];
+    if (_currentDisplayID >= 0) {
+        [self writeDDCCommand:&command ToDisplay:[[_displays objectAtIndex:_currentDisplayID] displayID]];
     }
 }
 
@@ -182,6 +182,9 @@
     return result && request->result == KERN_SUCCESS;
 }
 
+- (DDDisplay *)getCurrentDisplay {
+    return [_displays objectAtIndex:_currentDisplayID];
+}
 
 
 @end

@@ -20,7 +20,8 @@
 @interface DDCControl : NSObject
 
 @property (nonatomic, retain)NSMutableArray<DDDisplay *> *displays;
-@property NSInteger currentDisplay;
+@property NSInteger currentDisplayID;
+
 
 
 #define BRIGHTNESS 0x10
@@ -52,5 +53,7 @@ struct DDCReadCommand {
 - (BOOL)DisplayRequest:(CGDirectDisplayID)displayID request:(struct IOI2CRequest*)request;
 - (BOOL)writeDDCCommand:(struct DDCWriteCommand*)command ToDisplay:(CGDirectDisplayID)displayID;
 - (BOOL)readDDCCommand:(struct DDCReadCommand*)command FromDisplay:(CGDirectDisplayID)displayID;
+
+- (DDDisplay *)getCurrentDisplay;
 
 @end
