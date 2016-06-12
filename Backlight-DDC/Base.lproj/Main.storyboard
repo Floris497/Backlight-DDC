@@ -106,7 +106,7 @@
                             </popUpButton>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uYe-tn-ge7">
                                 <rect key="frame" x="2" y="52" width="475" height="27"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="below" numberOfTickMarks="21" allowsTickMarkValuesOnly="YES" sliderType="linear" id="nE3-hG-xMx"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="below" numberOfTickMarks="51" allowsTickMarkValuesOnly="YES" sliderType="linear" id="nE3-hG-xMx"/>
                                 <connections>
                                     <action selector="brightnessChange:" target="XfG-lQ-9wD" id="COU-k1-IfQ"/>
                                 </connections>
@@ -123,7 +123,7 @@
                             </button>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HY1-FP-935">
                                 <rect key="frame" x="2" y="29" width="475" height="26"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" numberOfTickMarks="21" allowsTickMarkValuesOnly="YES" sliderType="linear" id="sST-Ma-0Hn"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" numberOfTickMarks="51" allowsTickMarkValuesOnly="YES" sliderType="linear" id="sST-Ma-0Hn"/>
                                 <connections>
                                     <action selector="contrastChange:" target="XfG-lQ-9wD" id="62J-Al-jyQ"/>
                                 </connections>
