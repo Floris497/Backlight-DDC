@@ -18,5 +18,6 @@
 - (instancetype)initWithDisplay:(CGDirectDisplayID)displayID;
 
 - (NSString*)screenName;
+- (NSString*)serialNumber;
 
 @end
