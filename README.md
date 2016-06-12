@@ -18,6 +18,7 @@ Tested on DELL U2410 (1920x1200) with:
 - MacMini 2011 + Radeon HD6870 (DP/DVI/HDMI) (Works Better)
 
 KNOWN ISSUES:
+- CRASHES MACBOOKS
 - NVIDIA and INTEL GPU don't do data requiests good
 - some monitors try to smooth the transitions wich makes the screen flash a bit (partial fix with 'continuous effects' checkbox)
 
