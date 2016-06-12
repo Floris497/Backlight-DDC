@@ -8,8 +8,18 @@ This application implements some (altered) functions from: https://github.com/kf
 
 This application can change brightness and contrast on your DDC-CI enabled monitor.
 
+Requesting current values from the monitor seems to work much better on a AMD GPU than on an NVIDIA or INTEL GPU.
+
 ### support for multi monitor setup
 
+Tested on DELL U2410 (1920x1200) with:
+	MacMini 2011 + INTEL HD3000 (DP/HDMI) (Works okay)
+	MacMini 2011 + GTX 670 (DP/DVI/HDMI) (Works okay)
+	MacMini 2011 + Radeon HD6870 (DP/DVI/HDMI) (Works Better)
+
+KNOWN ISSUES:
+- NVIDIA and INTEL GPU don't do data requiests good
+- some monitors try to smooth the transitions wich makes the screen flash a bit (partial fix with 'continuous effects' checkbox)
 
 TODO:
 - proper reading of current values

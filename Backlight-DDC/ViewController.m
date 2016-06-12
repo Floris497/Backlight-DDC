@@ -21,12 +21,17 @@
     for (int c = 0; c < [control.displays count]; c++ ) {
         DDDisplay *disp = [control.displays objectAtIndex:c];
         NSString *name = [disp screenName];
-        [displayChooser addItemWithTitle:[NSString stringWithFormat:@"%d:\t%@",c+1,name]];
+        NSString *serial = [disp serialNumber];
+        [displayChooser addItemWithTitle:[NSString stringWithFormat:@"%@ (SN:%@)",name,serial]];
     }
     
-    [control setCurrentDisplay:0];
+    [control setCurrentDisplayID:0];
     
     [self getCurrentValues];
+    [self setMonitorSpecifics];
+    
+    // Some screens lag when you request informtion from them, need to see if fixable
+    // [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getCurrentValues) userInfo:nil repeats:YES];
 
 }
 
@@ -34,10 +39,21 @@
     [super setRepresentedObject:representedObject];
 }
 
-
 - (IBAction)changeChooser:(NSPopUpButton *)sender {
-    [control setCurrentDisplay:sender.indexOfSelectedItem];
+    [control setCurrentDisplayID:sender.indexOfSelectedItem];
     [self getCurrentValues];
+    [self setMonitorSpecifics];
+}
+
+- (IBAction)continuousMode:(NSButton *)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    DDDisplay *disp = [control getCurrentDisplay];
+    if (sender.state == NSOnState) {
+        [defaults setBool:YES forKey:[NSString stringWithFormat:@"%@:%@",kContinuousEffects,[disp serialNumber]]];
+    } else {
+        [defaults setBool:NO forKey:[NSString stringWithFormat:@"%@:%@",kContinuousEffects,[disp serialNumber]]];
+    }
+    [self setMonitorSpecifics];
 }
 
 - (IBAction)brightnessChange:(NSSlider *)sender {
@@ -55,6 +71,20 @@
 - (void)getCurrentValues {
     [brightnessSlider setDoubleValue:[control getBrightness]];
     [contrastSlider setDoubleValue:[control getContrast]];
+}
+
+- (void)setMonitorSpecifics {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    DDDisplay *disp = [control getCurrentDisplay];
+    if ([defaults boolForKey:[NSString stringWithFormat:@"%@:%@",kContinuousEffects,[disp serialNumber]]] == TRUE) {
+        [brightnessSlider setContinuous:NO];
+        [contrastSlider setContinuous:NO];
+        [continuousButton setState:NSOnState];
+    } else {
+        [brightnessSlider setContinuous:YES];
+        [contrastSlider setContinuous:YES];
+        [continuousButton setState:NSOffState];
+    }
 }
 
 @end

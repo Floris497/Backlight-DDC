@@ -128,6 +128,16 @@
                                     <action selector="contrastChange:" target="XfG-lQ-9wD" id="62J-Al-jyQ"/>
                                 </connections>
                             </slider>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f29-Pi-Iis">
+                                <rect key="frame" x="2" y="3" width="138" height="18"/>
+                                <buttonCell key="cell" type="check" title="Continuous Effects" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aMJ-OI-3LJ">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="continuousMode:" target="XfG-lQ-9wD" id="Ph1-hl-l0n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="HY1-FP-935" firstAttribute="trailing" secondItem="uYe-tn-ge7" secondAttribute="trailing" id="TZF-H5-XZL"/>
@@ -145,6 +155,7 @@
                     </view>
                     <connections>
                         <outlet property="brightnessSlider" destination="uYe-tn-ge7" id="a41-5c-kV2"/>
+                        <outlet property="continuousButton" destination="f29-Pi-Iis" id="feb-Xi-crl"/>
                         <outlet property="contrastSlider" destination="HY1-FP-935" id="o94-jy-hIi"/>
                         <outlet property="displayChooser" destination="93p-G6-j6w" id="vDi-gG-NWJ"/>
                     </connections>

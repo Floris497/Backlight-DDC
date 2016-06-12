@@ -9,9 +9,13 @@
 #import "DDCControl.h"
 #import "DDDisplay.h"
 
+#define kContinuousEffects @"ContinuousEffects"
+
 @interface ViewController : NSViewController {
     IBOutlet NSSlider *brightnessSlider;
     IBOutlet NSSlider *contrastSlider;
+    
+    IBOutlet NSButton *continuousButton;
     
     IBOutlet NSPopUpButton *displayChooser;
     
@@ -20,6 +24,8 @@
 
 
 - (IBAction)changeChooser:(NSPopUpButton *)sender;
+- (IBAction)continuousMode:(NSButton *)sender;
+
 - (IBAction)brightnessChange:(NSSlider *)sender;
 - (IBAction)contrastChange:(NSSlider *)sender;
 - (IBAction)resetDisplay:(NSButton *)sender;
